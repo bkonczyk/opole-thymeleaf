@@ -57,8 +57,9 @@ public class EmployeeController {
     @GetMapping("/page/{pageNo}")
     public String findPage(@PathVariable int pageNo, Model model) {
         Page<Employee> employeePage = service.findPage(pageNo);
+        List<Employee> employees = employeePage.getContent();
 
-        model.addAttribute("employees", employeePage.getContent());
+        model.addAttribute("employees", employees);
         model.addAttribute("currentPage", pageNo);
         model.addAttribute("totalPages", employeePage.getTotalPages());
         model.addAttribute("totalItems", employeePage.getTotalElements());
