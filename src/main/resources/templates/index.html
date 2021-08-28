@@ -36,6 +36,16 @@
         </tr>
         </tbody>
     </table>
+    <div th:if="${totalPages} > 1">
+        <ul class="pagination">
+            <li class="page-item">
+                <a class="page-link" th:href="@{'/page/' + ${currentPage - 1}}">Previous</a>
+            </li>
+            <li class="page-item" th:each="i: ${#numbers.sequence(1, totalPages)}">
+                <a class="page-link" th:href="@{'/page/' + ${i}}">[[${i}]]</a>
+            </li>
+        </ul>
+    </div>
 </div>
 </body>
 </html>
