@@ -34,6 +34,11 @@
             <artifactId>bootstrap</artifactId>
             <version>4.5.2</version> <!--może być dostępna nowsza wersja-->
         </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>6.1.5.Final</version> <!--dostępna może być nowsza wersja-->
+        </dependency>
 
         <dependency>
             <groupId>com.h2database</groupId>

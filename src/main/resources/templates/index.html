@@ -16,6 +16,7 @@
             <th><p>name</p></th>
             <th><p>surname</p></th>
             <th><p>email</p></th>
+            <th><p>pesel</p></th>
             <th><p>age</p></th>
             <th><p>actions</p></th>
         </tr>
@@ -26,8 +27,12 @@
             <td th:text="${employee.getName()}"></td>
             <td th:text="${employee.getSurname()}"></td>
             <td th:text="${employee.getEmail()}"></td>
+            <td th:text="${employee.getPesel()}"></td>
             <td th:text="${employee.getAge()}"></td>
-            <td><p>NOT YET</p></td>
+            <td>
+                <a th:href="@{'/delete-employee/' + ${employee.getId()}}"
+                   class="btn btn-danger btn-sm">Delete</a>
+            </td>
         </tr>
         </tbody>
     </table>
