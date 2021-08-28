@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employees main page</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="/webjars/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container my-5">
+    <a th:href="@{/add-employee-form}" class="btn btn-primary btn-sm mb-3">Add employee</a>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th><p>id</p></th>
+            <th><p>name</p></th>
+            <th><p>surname</p></th>
+            <th><p>email</p></th>
+            <th><p>age</p></th>
+            <th><p>actions</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="employee : ${employees}">
+            <td th:text="${employee.getId()}"></td>
+            <td th:text="${employee.getName()}"></td>
+            <td th:text="${employee.getSurname()}"></td>
+            <td th:text="${employee.getEmail()}"></td>
+            <td th:text="${employee.getAge()}"></td>
+            <td><p>NOT YET</p></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
