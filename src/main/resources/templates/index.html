@@ -30,6 +30,8 @@
             <td th:text="${employee.getPesel()}"></td>
             <td th:text="${employee.getAge()}"></td>
             <td>
+                <a th:href="@{'/update-employee-form/' + ${employee.getId()}}"
+                   class="btn btn-primary btn-sm">Update</a>
                 <a th:href="@{'/delete-employee/' + ${employee.getId()}}"
                    class="btn btn-danger btn-sm">Delete</a>
             </td>
@@ -39,14 +41,16 @@
     <div th:if="${totalPages} > 1">
         <ul class="pagination">
             <li class="page-item">
-                <a class="page-link" th:href="@{'/page/' + ${currentPage - 1}}">Previous</a>
+                <a class="page-link" th:if="${currentPage > 1}" th:href="@{'/page/' + ${currentPage - 1}}">Previous</a>
+                <a class="page-link" th:unless="${currentPage > 1}">Previous</a>
             </li>
             <li class="page-item" th:each="i: ${#numbers.sequence(1, totalPages)}">
                 <a class="page-link" th:if="${currentPage != i}" th:href="@{'/page/' + ${i}}">[[${i}]]</a>
-                <a class="page-link" th:unless="${currentPage != i}">[[${i}]]</a>
+                <a class="page-link" style="background-color: lightslategray" th:unless="${currentPage != i}">[[${i}]]</a>
             </li>
             <li class="page-item">
-                <a class="page-link" th:href="@{'/page/' + ${currentPage + 1}}">Next</a>
+                <a class="page-link" th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${currentPage + 1}}">Next</a>
+                <a class="page-link" th:unless="${currentPage < totalPages}">Next</a>
             </li>
         </ul>
     </div>
