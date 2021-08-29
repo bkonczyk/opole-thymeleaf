@@ -8,6 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -64,5 +65,21 @@ public class EmployeeController {
         model.addAttribute("totalPages", employeePage.getTotalPages());
         model.addAttribute("totalItems", employeePage.getTotalElements());
         return "index";
+    }
+
+    @GetMapping("/update-employee-form/{id}")
+    public String updateEmployeeForm(@PathVariable UUID id, Model model) {
+        Employee employee = service.get(id);
+        model.addAttribute("employee", employee);
+        return "update-employee-form";
+    }
+
+    @PutMapping("/update-employee")
+    public String updateEmployee(@Valid Employee employee, BindingResult result) {
+        if (result.hasErrors()) {
+            return "update-employee-form";
+        }
+        service.saveEmployee(employee);
+        return "redirect:/index";
     }
 }

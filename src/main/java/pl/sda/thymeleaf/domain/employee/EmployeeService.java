@@ -34,4 +34,8 @@ public class EmployeeService {
         PageRequest pageRequest = PageRequest.of(--pageNo, pageSize);
         return repository.findAll(pageRequest);
     }
+
+    public Employee get(UUID id) {
+        return repository.findById(id).orElse(new Employee());
+    }
 }
